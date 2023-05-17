@@ -1,0 +1,88 @@
+<%- include('partials/header') -%>
+<div class="bg-4"></div>
+<div class="container">
+  <div class="row mt-5">
+    <!-- col-6 -->
+      <div class="col-6-profile">
+        <div class="profileWrap"></div>
+          <div>
+            <div class="rap-p"></div>
+              <p><strong>User Name</strong>: <span><%= user.userName %></span></p>
+              <p><strong>Email</strong>: <span><%= user.email %></span></p>
+              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+          </div>
+          <div class="mt-5-profile">
+            <h2 id="h2profile">Add workout</h2>
+            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                  <label for="title" class="form-label"> Muscle | Area</label>
+            
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Musculus trapezius" >
+              </div>
+              <div class="mb-3">
+                <label for="caption" class="form-label">Log</label>
+                <textarea class="form-control" id="caption" name="caption" placeholder="3x12 on bench press @ 135                    3x12 face pull, at 50lb                          
+                
+                10 minute run at 6.5 mph 
+                20 minute stairmaster at 7.8                                
+                "></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imgUpload" class="form-label">Image</label>
+                <input type="file" class="form-control" id="imageUpload" name="file">
+              </div>
+              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            </form>
+          </div>
+      </div>
+     
+
+      <div class="scrollBar">
+        <div class="scrollBar-content-wrap">
+          <div class="marquee">
+            <ul class="marquee-content">
+              <% for(var i=0; i<posts.length; i++) {%>
+              <li>
+                <a href="/post/<%= posts[i]._id%>">
+                  <img class="img-fluid" src="<%= posts[i].image%>">
+                </a>
+               
+              </li>
+              <% } %>
+            </ul>
+          </div>
+
+
+
+
+        <!-- <% for(var i=0; i<posts.length; i++) {%>
+          
+          <li class="profile-scroll-slider">
+
+            
+            <div class="profile-img-wrap">
+              <a href="/post/<%= posts[i]._id%>">
+              
+                <img class="img-fluid" src="<%= posts[i].image%>">
+              </a>
+
+            </div>
+          </li>
+          
+          <% } %>
+          
+
+        </div> -->
+        </div>
+     
+   
+        
+         
+      </div>
+      <div class="row justify-content-center mt-5">
+        <a class="btn btn-primary" href="/feed">Return to Feed</a>
+      </div> 
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
